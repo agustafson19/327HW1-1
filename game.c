@@ -13,8 +13,9 @@ typedef struct room_struct {
 } room;
 
 void createrooms(room *rooms, int numrooms);
-int validrooms(room *rooms, int numrooms);
+
 void maprooms(char display[W_HEIGHT][W_WIDTH], room *rooms, int numrooms);
+
 void initDisplay(char display[W_HEIGHT][W_WIDTH]);
 void draw(char display[W_HEIGHT][W_WIDTH]);
 
@@ -42,7 +43,7 @@ int main() {
 }
 
 void createrooms(room *rooms, int numrooms) {
-    int i;
+    char i, j, v;
     do {
         for (i = 0; i < numrooms; i++) {
             rooms[i].xsize = 4 + rand() % 10;
@@ -50,20 +51,16 @@ void createrooms(room *rooms, int numrooms) {
             rooms[i].xpos = rand() % (W_WIDTH - rooms[i].xsize);
             rooms[i].ypos = rand() % (W_HEIGHT - rooms[i].ysize);
         }
-    } while(!validrooms(rooms, numrooms));
-}
-
-int validrooms(room *rooms, int numrooms) {
-    int i, j;
-    for (i = 1; i < numrooms; i++) {
-        for (j = 0; j < i; j++) {
-            if (!(rooms[i].xpos + rooms[i].xsize < rooms[j].xpos || rooms[j].xpos + rooms[j].xsize < rooms[i].xpos)
-                    && !(rooms[i].ypos + rooms[i].ysize < rooms[j].ypos || rooms[j].ypos + rooms[j].ysize < rooms[i].ypos)) {
-                return 0;
+        v = 1;
+        for (i = 1; i < numrooms && v; i++) {
+            for (j = 0; j < i && v; j++) {
+                if (!(rooms[i].xpos + rooms[i].xsize < rooms[j].xpos || rooms[j].xpos + rooms[j].xsize < rooms[i].xpos)
+                        && !(rooms[i].ypos + rooms[i].ysize < rooms[j].ypos || rooms[j].ypos + rooms[j].ysize < rooms[i].ypos)) {
+                    v = 0;
+                }
             }
         }
-    }
-    return 1;
+    } while(!v);
 }
 
 void maprooms(char display[W_HEIGHT][W_WIDTH], room *rooms, int numrooms) {
