@@ -117,6 +117,7 @@ void createrooms(room_t **rooms, uint8_t *numrooms) {
 }
 
 void save(room_t *rooms, uint8_t numrooms, entity_t *player) {
+    uint8_t i;
     char *home = getenv("HOME");
     char *gamedir = ".rlg327";
     char *save = "dungeon";
@@ -125,13 +126,21 @@ void save(room_t *rooms, uint8_t numrooms, entity_t *player) {
     printf("%s\n", path);
     FILE *f = fopen(path, "w");
     fwrite(&numrooms, sizeof(uint8_t), 1, f);
-    fwrite(rooms, sizeof(room_t), numrooms, f);
-    fwrite(player, sizeof(entity_t), 1, f);
+    for (i = 0; i < numrooms; i++) {
+        fwrite(&(rooms[i].xpos), sizeof(uint8_t), 1, f);
+        fwrite(&(rooms[i].ypos), sizeof(uint8_t), 1, f);
+        fwrite(&(rooms[i].xsize), sizeof(uint8_t), 1, f);
+        fwrite(&(rooms[i].ysize), sizeof(uint8_t), 1, f);
+    }
+    fwrite(&(player->xpos), sizeof(uint8_t), 1, f);
+    fwrite(&(player->ypos), sizeof(uint8_t), 1, f);
+    fwrite(&(player->symbol), sizeof(char), 1, f);
     fclose(f);
     free(path);
 }
 
 void load(room_t **rooms, uint8_t *numrooms, entity_t **player) {
+    uint8_t i;
     char *home = getenv("HOME");
     char *gamedir = ".rlg327";
     char *save = "dungeon";
@@ -141,9 +150,16 @@ void load(room_t **rooms, uint8_t *numrooms, entity_t **player) {
     FILE *f = fopen(path, "r");
     fread(numrooms, sizeof(uint8_t), 1, f);
     *rooms = malloc(sizeof(room_t) * *numrooms);
-    fread(*rooms, 4 * sizeof(uint8_t), *numrooms, f);
+    for (i = 0; i < *numrooms; i++) {
+        fread(&((*rooms)[i].xpos), sizeof(uint8_t), 1, f);
+        fread(&((*rooms)[i].ypos), sizeof(uint8_t), 1, f);
+        fread(&((*rooms)[i].xsize), sizeof(uint8_t), 1, f);
+        fread(&((*rooms)[i].ysize), sizeof(uint8_t), 1, f);
+    }
     *player = malloc(sizeof(entity_t));
-    fread(*player, sizeof(entity_t), 1, f);
+    fread(&((*player)->xpos), sizeof(uint8_t), 1, f);
+    fread(&((*player)->ypos), sizeof(uint8_t), 1, f);
+    fread(&((*player)->symbol), sizeof(uint8_t), 1, f);
     fclose(f);
     free(path);
 }
