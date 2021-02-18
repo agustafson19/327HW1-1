@@ -1,0 +1,17 @@
+
+The size of all the variables used were altered to increase memory efficiency.
+
+The entity struct was added; it is used to represent the player, but, in the future, may be useful for representing monsters.
+
+The getArgs funcitons was added; it processes the command arguments.
+    Masks are used on args to get whether the --load or --save switches were used.
+
+The validrooms function was removed, and directly implemented within the createrooms function, for it was not used elsewhere.
+
+The save and load functions were added, which load and save the rooms, and position of the player.
+
+The initDisplay function was changed to initmap.
+
+The sketchmap function was implemented, which draws a map onto the display array.
+
+The place function was implemented, which places a dynamically allocated array of entities onto the display array.
