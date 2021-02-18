@@ -1,0 +1,55 @@
+commit 4e016de2c142ea0867c907f7844b69d22a5ff815
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 18:42:24 2021 -0600
+
+    Added a readme file
+
+commit a779dfd4b7177688aa88684006e218f266df948d
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 18:29:34 2021 -0600
+
+    Fixed further saving and loading issues
+    
+    Fixed compatability with between computers, added commented printf
+    lines, which are useful for debugging.
+
+commit 79f749c290d1b0b82f7cc7a958455776ad7e39f3
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 17:03:48 2021 -0600
+
+    Changed how structs are stored
+    
+    Changed how structs are stored due to discrepencies in sequencing
+    between computers.
+
+commit 8c9f748869f863d389dc9ee44810a5386ed22ab2
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 16:38:19 2021 -0600
+
+    Finnished Assignment 1-1
+    
+    Reworked existing map generation functions for self containment,
+    implemented a loading and saving functions, added an entity struct,
+    included a player character '@', developed a map system for displaying, added a
+    gitignore.
+
+commit c39be3fac7579be55c467f92c45f6472d1119486
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 13:37:50 2021 -0600
+
+    Removed room validation function
+    
+    Replaced the room validation function with code within the createrooms
+    function, to reduce unnecessary rooms.
+
+commit e35f2c10adde3fc46da827946ea2c1ff992f6d27
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 10:54:35 2021 -0600
+
+    Added work from last time.
+
+commit 9cb165e27bc1dc9e0f0240a7ee6c8b0bdfa4c15b
+Author: agustafson19 <40578471+agustafson19@users.noreply.github.com>
+Date:   Wed Feb 17 10:46:37 2021 -0600
+
+    Added instructions.
