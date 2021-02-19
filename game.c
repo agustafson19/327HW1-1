@@ -143,7 +143,25 @@ void generate(entity_t **player, uint8_t hardness[W_HEIGHT][W_WIDTH], uint16_t *
     (*d_stairs)->xpos = (*rooms)[*num_rooms - 1].xpos + 1;
     (*d_stairs)->ypos = (*rooms)[*num_rooms - 1].ypos + 1;
     (*d_stairs)->symbol = '>';
-    //TODO HARDNESS
+    for (i = 0; i < W_HEIGHT; i++) {
+        for (j = 0; j < W_WIDTH; j++) {
+            hardness[i][j] = 0xFF;
+        }
+    }
+    for (i = 1; i < *num_rooms; i++) {
+        for (j = (*rooms)[i-1].ypos + (*rooms)[i-1].ysize / 2; j <= (*rooms)[i].ypos + (*rooms)[i].ysize / 2; j++) {
+            hardness[j][(*rooms)[i-1].xpos + (*rooms)[i-1].xsize / 2] = 0;
+        }
+        for (j = (*rooms)[i-1].ypos + (*rooms)[i-1].ysize / 2; j >= (*rooms)[i].ypos + (*rooms)[i].ysize / 2; j--) {
+            hardness[j][(*rooms)[i-1].xpos + (*rooms)[i-1].xsize / 2] = 0;
+        }
+        for (j = (*rooms)[i-1].xpos + (*rooms)[i-1].xsize / 2; j <= (*rooms)[i].xpos + (*rooms)[i].xsize / 2; j++) {
+            hardness[(*rooms)[i].ypos + (*rooms)[i].ysize / 2][j] = 0;
+        }
+        for (j = (*rooms)[i-1].xpos + (*rooms)[i-1].xsize / 2; j >= (*rooms)[i].xpos + (*rooms)[i].xsize / 2; j--) {
+            hardness[(*rooms)[i].ypos + (*rooms)[i].ysize / 2][j] = 0;
+        }
+    }
 }
 
 void save(entity_t *player, uint8_t hardness[W_HEIGHT][W_WIDTH], uint16_t num_rooms, room_t *rooms, uint16_t num_u_stairs, entity_t *u_stairs, uint16_t num_d_stairs, entity_t *d_stairs)
@@ -288,7 +306,13 @@ void map_rooms(char map[W_HEIGHT][W_WIDTH], uint8_t hardness[W_HEIGHT][W_WIDTH],
         }
         /* display[rooms[i].ypos][rooms[i].xpos] = '0' + i; */
     }
-    //TODO MAP CORRODORS
+    for (i = 0; i < W_HEIGHT; i++) {
+        for (j = 0; j < W_WIDTH; j++) {
+            if (hardness[i][j] == 0 && map[i][j] == ' ') {
+                map[i][j] = '#';
+            }
+        }
+    }
 }
 
 void init_map(char map[W_HEIGHT][W_WIDTH])
