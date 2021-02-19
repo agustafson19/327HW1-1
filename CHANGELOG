@@ -1,3 +1,33 @@
+commit b86fb40b8a0bbd1330d2449960f8af2a1b3dce2e
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Thu Feb 18 18:02:32 2021 -0600
+
+    Reworked corridors.
+    
+    Reworked corridors so that this application is compatable with others
+    from my classmates.
+
+commit 7b2692348a7862aa0119d7f7f3f63f159f994514
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Thu Feb 18 17:02:36 2021 -0600
+
+    Reworked Saving and Loading
+    
+    Reworked saving and loading to be complient with standards; temporarily
+    removed corridors.
+
+commit f7d88d88cd9577ad1e9edd5a2f51513c2cd01594
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 18:49:50 2021 -0600
+
+    Added tarballed archive
+
+commit d2eb3bcfd6b1bfc2f7dbb807c501bbfb12be98b0
+Author: agustafson19 <arvidg@iastate.edu>
+Date:   Wed Feb 17 18:43:26 2021 -0600
+
+    Updated the changelog to include itself
+
 commit 4610911db2ae329878851f7af7435e3b8f7d130e
 Author: agustafson19 <arvidg@iastate.edu>
 Date:   Wed Feb 17 18:42:55 2021 -0600
