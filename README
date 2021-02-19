@@ -8,6 +8,8 @@ The getArgs funcitons was added; it processes the command arguments.
 
 The validrooms function was removed, and directly implemented within the createrooms function, for it was not used elsewhere.
 
+The createrooms function was changed to generate.
+
 The save and load functions were added, which load and save the rooms, and position of the player.
 
 The initDisplay function was changed to initmap.
